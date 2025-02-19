@@ -4,10 +4,11 @@
 const express= require("express");
 const { createTodo, updateTodo } = require("./types");
 const { todo } = require("./db");
+const cors = require("cors");
 const app = express();
 
 app.use(express.json());
-
+app.use(cors());
 app.post("/todo", async function(req, res){
       const createPayLoad = req.body;
       const parsePayLoad = createTodo.safeParse(createPayLoad);
@@ -29,10 +30,10 @@ app.post("/todo", async function(req, res){
 })
 
 app.get("/todos", async function(req, res){
-    const todo = await todo.find({});
+    const todos = await todo.find({});
 
     res.json({
-      todos
+      todos: []
     })
 })
 

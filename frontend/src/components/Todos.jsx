@@ -1,8 +1,13 @@
 
-export function Todos(){
+export function Todos({todos}){    //todos is an array using function map we can cover this
     return <div>
-        <h1>Go to gym</h1>
-        <h2>You need to go to gym</h2>\
-        <button>Mark as Completed</button>
+        {todos.map(function(todos){
+            return <div>
+                   <h1>{todos.title}</h1>
+        <h2>{todos.description}</h2>
+        <button>{todos.completed == true ? "completed" : "mark as done"}</button>
+            </div>
+        })}
+        
     </div>
 }
